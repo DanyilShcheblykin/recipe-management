@@ -9,6 +9,7 @@ interface RecipeCradProps {
 }
 
 const RecipeCard = ({ index, item, children }: RecipeCradProps) => {
+
     return (
         <div key={index} className='recipeCard'>
             <img className='dishImage' src={item.image} alt="" />

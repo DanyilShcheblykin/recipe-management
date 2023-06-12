@@ -7,8 +7,8 @@ import RecipeCard from '../../shared/recipe-card/recipe-card';
 import { recipesData } from '../../../data/recipesData';
 
 export interface RecipeDataProps {
-    id: number,
-    image: any,
+    id:string,
+    image: string,
     name: string,
     description: string,
     ingredients: Array<string>,

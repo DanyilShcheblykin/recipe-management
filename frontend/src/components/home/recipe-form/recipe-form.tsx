@@ -1,25 +1,68 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './recipe-form.scss'
+import { saveRecipe } from '../../../store/recipeSlice';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
+
+interface RecipeFormData {
+    name: string,
+    ingredients: Array<string>,
+    description: string,
+    image: string,
+    imageUrl: string;
+}
 
 const RecipeForm = () => {
-    const [recipeData, setRecipeData] = useState({
+
+    const dispatch = useDispatch();
+
+
+    const [recipeData, setRecipeData] = useState<RecipeFormData>({
         name: '',
-        ingredients: '',
+        ingredients: [''],
         description: '',
         image: '',
+        imageUrl: ''
     });
 
-    const handleChange = (event: any) => {
-        const { name, value } = event.target;
-        setRecipeData((prevState) => ({
+    const handleChange = (event: React.ChangeEvent<any>) => {
+        const { name, value, files } = event.target;
+        if (name === 'imageFile') {
+          if (files && files.length > 0) {
+            const selectedImage = files[0];
+            const imageUrl = URL.createObjectURL(selectedImage);
+            setRecipeData((prevState) => ({
+              ...prevState,
+              image: imageUrl,
+              imageUrl: imageUrl,
+            }));
+          } else {
+            setRecipeData((prevState) => ({
+              ...prevState,
+              image: '',
+              imageUrl: '',
+            }));
+          }
+        } else if (name === 'ingredients') {
+          const ingredientsArray = value
+            .split(/[^\wа-яА-ЯёЁ]+/)
+            .filter((ingredient:any) => ingredient.trim() !== '');
+    
+          setRecipeData((prevState) => ({
+            ...prevState,
+            ingredients: ingredientsArray,
+          }));
+        } else {
+          setRecipeData((prevState) => ({
             ...prevState,
             [name]: value,
-        }));
-    };
+          }));
+        }
+      };
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        console.log(recipeData);
+        dispatch(saveRecipe({ ...recipeData, liked: false, id: uuidv4() }))
     };
 
     return (
@@ -55,12 +98,12 @@ const RecipeForm = () => {
                         />
                     </div>
                     <div className="form-field">
-                        <label htmlFor="imageUrl">URL изображения:</label>
+                        <label htmlFor="imageFile">Выберете изображения:</label>
                         <input
-                            type="text"
-                            id="imageUrl"
-                            name="imageUrl"
-                            value={recipeData.image}
+                            accept="image/jpeg, image/png"
+                            type="file"
+                            id="imageFile"
+                            name="imageFile"
                             onChange={handleChange}
                         />
                     </div>
