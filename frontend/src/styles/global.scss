@@ -12,11 +12,18 @@
     box-sizing: border-box;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 html,
 body {
     color: $color;
     background-color: $main-back;
     scrollbar-width: none;
+
     &::-webkit-scrollbar {
         width: 0;
         height: 0;
@@ -25,6 +32,6 @@ body {
 
 .container {
     max-width: $container-max-width;
-    width:$container-width;
+    width: $container-width;
     margin: 0 auto;
 }

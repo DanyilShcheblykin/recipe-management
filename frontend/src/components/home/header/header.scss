@@ -26,8 +26,9 @@
             font-family: 'Lato';
             font-style: normal;
             font-weight: 500;
+            
             &:not(:last-child){
-                margin-right: 8px;
+                margin-right: 10px;
             }
         }
     }
