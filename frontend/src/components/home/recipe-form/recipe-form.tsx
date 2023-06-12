@@ -6,7 +6,7 @@ const RecipeForm = () => {
         name: '',
         ingredients: '',
         description: '',
-        imageUrl: '',
+        image: '',
     });
 
     const handleChange = (event: any) => {
@@ -60,7 +60,7 @@ const RecipeForm = () => {
                             type="text"
                             id="imageUrl"
                             name="imageUrl"
-                            value={recipeData.imageUrl}
+                            value={recipeData.image}
                             onChange={handleChange}
                         />
                     </div>

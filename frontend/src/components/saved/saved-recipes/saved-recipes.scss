@@ -1,0 +1,22 @@
+.recipesSaved {
+    background-image: url('../../../assets/saved/background.png');
+    background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 100vh;
+}
+
+.recipesSavedContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.delete {
+    background-color: #020101;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    border: 1.5px solid red;
+    border-radius: 5px;
+}

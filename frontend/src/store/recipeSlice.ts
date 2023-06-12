@@ -1,21 +1,27 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RecipeDataProps } from '../components/home/recipes/recipes';
 
+export interface RecipeCrad extends RecipeDataProps {
+    liked: boolean
+}
+
 const recipeSlice = createSlice({
     name: 'recipe',
     initialState: {
-        likedRecipes: [],
         savedRecipes: [],
     },
     reducers: {
-        likeRecipe: (state: any, action: PayloadAction<RecipeDataProps>) => {
-            state.likedRecipes.push(action.payload);
-        },
-        saveRecipe: (state: any, action: PayloadAction<RecipeDataProps>) => {
+        saveRecipe: (state: any, action: PayloadAction<RecipeCrad>) => {
             state.savedRecipes.push(action.payload);
         },
+        removeRecipe(state, action: PayloadAction<RecipeCrad>) {
+            console.log(state.savedRecipes)
+            state.savedRecipes = state.savedRecipes.filter((item: RecipeCrad) => {
+                return item.id !== action.payload.id
+            })
+        }
     },
 });
 
-export const { likeRecipe, saveRecipe } = recipeSlice.actions;
+export const { removeRecipe, saveRecipe } = recipeSlice.actions;
 export default recipeSlice.reducer;
