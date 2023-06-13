@@ -6,19 +6,21 @@ export interface RecipeCrad extends RecipeDataProps {
     liked: boolean
 }
 
+interface RecipeState {
+    savedRecipes: RecipeCrad[];
+}
+
 const recipeSlice = createSlice({
     name: 'recipe',
     initialState: {
         savedRecipes: [],
-    },
+    } as RecipeState,
     reducers: {
-        saveRecipe: (state: any, action: PayloadAction<RecipeCrad>) => {
+        saveRecipe: (state, action: PayloadAction<RecipeCrad>) => {
             state.savedRecipes.push({...action.payload , id:uuidv4()});
-            
         },
         removeRecipe(state, action: PayloadAction<RecipeCrad>) {
-            console.log(state.savedRecipes)
-            state.savedRecipes = state.savedRecipes.filter((item:RecipeCrad)=>{
+            state.savedRecipes = state.savedRecipes.filter((item: RecipeCrad) => {
                 return item.id !== action.payload.id
             })     
         }

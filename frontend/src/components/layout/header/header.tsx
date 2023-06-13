@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 const Header = () => {
 
-    const { setShowModal, loggedIn , setLoggedIn} = useContext(UserContext);
+    const { setShowModal, loggedIn, setLoggedIn } = useContext(UserContext);
 
     const logIn = () => {
         setShowModal(true)

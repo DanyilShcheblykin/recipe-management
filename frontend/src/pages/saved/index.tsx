@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Header from '../../components/home/header/header';
+import Header from '../../components/layout/header/header';
 import SavedRecipes from '../../components/saved/saved-recipes/saved-recipes';
 import Modal from '../../components/shared/modal/modal';
 
@@ -10,7 +9,6 @@ const SavedPage = () => {
             <Header></Header>
             <SavedRecipes></SavedRecipes>
             <Modal></Modal>
-
         </div>
     );
 };

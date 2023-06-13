@@ -1,15 +1,22 @@
+@import '../../../styles/variables.scss';
+
 .recipesSaved {
     background-image: url('../../../assets/saved/background.png');
     background-size: cover;
     padding-top: 50px;
     padding-bottom: 50px;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
 }
 
 .recipesSavedContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
+
+    @media (max-width:$small-tablet) {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .delete {
@@ -19,4 +26,10 @@
     text-align: center;
     border: 1.5px solid red;
     border-radius: 5px;
+}
+
+.likedCard {
+    width: 40px;
+    height: 40px;
+    margin-left: 35px;
 }

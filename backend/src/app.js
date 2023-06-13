@@ -7,11 +7,11 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 app.use(bodyParser.json());
 
-const mongoUrl = 'mongodb+srv://danyilshch:Federer2002@cluster0.iyqq3gp.mongodb.net/?retryWrites=true&w=majority';
+const mongoUrl = 'mongodb+srv://danyilshch:<password>@cluster0.iyqq3gp.mongodb.net/?retryWrites=true&w=majority';
 
 // Connect to MongoDB
 
-const uri = "mongodb+srv://danyilshch:Federer2002@cluster0.iyqq3gp.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://danyilshch:<password>@cluster0.iyqq3gp.mongodb.net/?retryWrites=true&w=majority";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {

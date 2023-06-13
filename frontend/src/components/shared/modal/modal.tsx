@@ -8,8 +8,6 @@ function Modal() {
 
     const { showModal, setShowModal, setLoggedIn } = useContext(UserContext);
 
-    console.log(showModal)
-
     const handleSubmit = (e: any) => {
         setLoggedIn(true)
         const user = { name, email };

@@ -1,5 +1,4 @@
 import '../recipes/recipes.scss'
-import Gulush from '../../../assets/home/gulush.png'
 import Like from '../../../assets/home/like.svg'
 import { useDispatch } from 'react-redux';
 import { saveRecipe } from '../../../store/recipeSlice';
@@ -19,9 +18,9 @@ export interface RecipeDataProps {
 const Recipes = () => {
     const dispatch = useDispatch();
 
-    const { setShowModal, loggedIn, setLoggedIn } = useContext(UserContext);
+    const {loggedIn} = useContext(UserContext);
 
-    const handleSaveRecipe = (item: RecipeDataProps, likedRecipe: boolean, isUserLogged?: boolean) => {
+    const handleSaveRecipe = (item: RecipeDataProps, likedRecipe: boolean) => {
         if (loggedIn) {
             dispatch(saveRecipe({ ...item, liked: likedRecipe }));
         }
@@ -41,7 +40,7 @@ const Recipes = () => {
                                     </button>
 
                                     <img
-                                        onClick={() => handleSaveRecipe(item, true, loggedIn)}
+                                        onClick={() => handleSaveRecipe(item, true)}
                                         className={`addFavourite ${!loggedIn ? 'disableClick' : ''}`}
                                         src={Like}
                                         alt='like'
