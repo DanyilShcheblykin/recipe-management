@@ -48,8 +48,7 @@
 .registration {
     display: flex;
 
-    .signIn,
-    .logIn {
+    .logButton {
         background-color: #D3EAFF;
         border: solid #D3EAFF;
         padding: 10px 33px;
@@ -57,10 +56,6 @@
         font-size: 24px;
         font-style: normal;
         font-weight: 600;
-
-    }
-
-    .signIn {
-        margin-right: 10px;
+        width: 190px;
     }
 }

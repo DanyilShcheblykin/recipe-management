@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/home/header/header';
 import SavedRecipes from '../../components/saved/saved-recipes/saved-recipes';
+import Modal from '../../components/shared/modal/modal';
 
 const SavedPage = () => {
+  
     return (
         <div>
             <Header></Header>
-            <SavedRecipes></SavedRecipes> 
+            <SavedRecipes></SavedRecipes>
+            <Modal></Modal>
+
         </div>
     );
 };

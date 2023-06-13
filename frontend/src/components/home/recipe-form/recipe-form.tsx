@@ -61,6 +61,7 @@ const RecipeForm = () => {
       };
 
     const handleSubmit = (event: any) => {
+      
         event.preventDefault();
         dispatch(saveRecipe({ ...recipeData, liked: false, id: uuidv4() }))
     };

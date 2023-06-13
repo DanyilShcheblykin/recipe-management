@@ -15,11 +15,7 @@ const SavedRecipes = () => {
 
 
     const data = useSelector((state: any) => state.recipe.savedRecipes)
-    console.log(data)
-
-    // const [recipesList, setRecipesList] = useState(useSelector((state: any) => state.recipe.savedRecipes))
-    // console.log(recipesList)
-
+    
     return (
         <section className='recipesSaved'>
             <div className='recipesSavedContainer container'>

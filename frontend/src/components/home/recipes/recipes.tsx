@@ -5,9 +5,11 @@ import { useDispatch } from 'react-redux';
 import { saveRecipe } from '../../../store/recipeSlice';
 import RecipeCard from '../../shared/recipe-card/recipe-card';
 import { recipesData } from '../../../data/recipesData';
+import { useContext } from 'react';
+import { UserContext } from '../../../App';
 
 export interface RecipeDataProps {
-    id:string,
+    id: string,
     image: string,
     name: string,
     description: string,
@@ -17,8 +19,12 @@ export interface RecipeDataProps {
 const Recipes = () => {
     const dispatch = useDispatch();
 
-    const handleSaveRecipe = (item: RecipeDataProps, likedRecipe: boolean) => {
-        dispatch(saveRecipe({ ...item, liked: likedRecipe }));
+    const { setShowModal, loggedIn, setLoggedIn } = useContext(UserContext);
+
+    const handleSaveRecipe = (item: RecipeDataProps, likedRecipe: boolean, isUserLogged?: boolean) => {
+        if (loggedIn) {
+            dispatch(saveRecipe({ ...item, liked: likedRecipe }));
+        }
     };
 
 
@@ -30,15 +36,17 @@ const Recipes = () => {
                         <RecipeCard index={index} item={item}>
                             {
                                 <>
-                                    <button onClick={() => handleSaveRecipe(item, false)} className='save'>
+                                    <button disabled={loggedIn ? false : true} onClick={() => handleSaveRecipe(item, false)} className={`save ${!loggedIn ? 'disableClick' : ''}`} >
                                         Save
                                     </button>
+
                                     <img
-                                        onClick={() => handleSaveRecipe(item, true)}
-                                        className='addFavourite'
+                                        onClick={() => handleSaveRecipe(item, true, loggedIn)}
+                                        className={`addFavourite ${!loggedIn ? 'disableClick' : ''}`}
                                         src={Like}
                                         alt='like'
                                     />
+
                                 </>
                             }
                         </RecipeCard>

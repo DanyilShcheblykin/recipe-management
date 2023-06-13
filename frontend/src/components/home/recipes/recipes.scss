@@ -11,17 +11,21 @@
     gap: 30px;
 }
 
-    .save {
-        margin-right: 35px;
-        background-color: #020101;
-        color: white;
-        padding: 8px 15px;
-        text-align: center;
-        border: 1.5px solid red;
-        border-radius: 5px;
-    }
+.save {
+    margin-right: 35px;
+    background-color: #020101;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    border: 1.5px solid red;
+    border-radius: 5px;
+}
 
-    .addFavourite {
-        width: 40px;
-        height: 40px;
-    }
+.addFavourite {
+    width: 40px;
+    height: 40px;
+}
+
+.disableClick {
+    cursor: not-allowed;
+}

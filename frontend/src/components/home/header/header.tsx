@@ -1,8 +1,22 @@
 import './header.scss';
 import Logo from '../../../assets/home/logo.svg'
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
+import { useContext } from 'react';
 
 const Header = () => {
+
+    const { setShowModal, loggedIn , setLoggedIn} = useContext(UserContext);
+
+    const logIn = () => {
+        setShowModal(true)
+    }
+
+    const logOut = () => {
+        localStorage.removeItem('user')
+        setLoggedIn(false)
+    }
+
     return (
         <header className='header'>
             <div className='headerBlock container'>
@@ -23,8 +37,11 @@ const Header = () => {
                 </div>
                 <div className="registration">
 
-                    <button className='signIn'>SIGN IN</button>
-                    <button className='logIn'>SIGN IN</button>
+                    {
+                        loggedIn ?
+                            <button onClick={logOut} className='logButton'>LOG OUT</button> :
+                            <button onClick={logIn} className='logButton'>LOG IN</button>
+                    }
 
                 </div>
             </div>
