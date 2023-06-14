@@ -1,32 +1,31 @@
 import React from 'react';
 import { RecipeDataProps } from '../../home/recipes/recipes';
-import './recipe-card.scss'
+import './recipe-card.scss';
 
-interface RecipeCradProps {
-    index: number,
-    item: RecipeDataProps
-    children: React.ReactNode
+interface RecipeCardProps {
+  index: number;
+  item: RecipeDataProps;
+  children: React.ReactNode;
 }
 
-const RecipeCard = ({ index, item, children }: RecipeCradProps) => {
-
-    return (
-        <div key={index} className='recipeCard'>
-            <img className='dishImage' src={item.image} alt="" />
-            <div className='recipeCardBlock'>
-                <h2 className='title'>{item.name}</h2>
-                <span className='subTitle'>{item.description}</span>
-                <ul className='ingredient'>
-                    {item.ingredients.map((ingredient: any, i: number) => (
-                        <li key={i}>{ingredient}</li>
-                    ))}
-                </ul>
-                <div className='buttonBlock'>
-                    {children}
-                </div>
-            </div>
+const RecipeCard: React.FC<RecipeCardProps> = ({ index, item, children }) => {
+  return (
+    <div key={index} className='recipe-card'>
+      <img className='recipe-card__image' src={item.image} alt="" />
+      <div className='recipe-card__content'>
+        <h2 className='recipe-card__title'>{item.name}</h2>
+        <span className='recipe-card__sub-title'>{item.description}</span>
+        <ul className='recipe-card__ingredient-list'>
+          {item.ingredients.map((ingredient: any, i: number) => (
+            <li key={i} className='recipe-card__ingredient'>{ingredient}</li>
+          ))}
+        </ul>
+        <div className='recipe-card__button-block'>
+          {children}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default RecipeCard;

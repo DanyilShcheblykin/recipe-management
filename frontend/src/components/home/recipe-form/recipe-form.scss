@@ -1,18 +1,16 @@
 @import '../../../styles/variables.scss';
 
-section {
-    background-color: #1e1e1e;
-    padding: 50px 0 50px 0;
-}
-
 .recipe-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    @media (max-width:$tablet) {
+    background-color: #1e1e1e;
+    padding: 50px 0;
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         column-gap: 40px;
     }
 
-    .form-field {
+    &__field {
         margin-bottom: 16px;
         max-width: 400px;
 
@@ -42,10 +40,10 @@ section {
         }
     }
 
-    .form-button {
+    &__button {
         button {
             padding: 13px 30px;
-            background-color: #000000;;
+            background-color: #000000;
             color: white;
             border: 1.5px solid red;
             border-radius: 4px;

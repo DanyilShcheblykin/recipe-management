@@ -1,21 +1,22 @@
 @import '../../../styles/variables.scss';
-.recipes {
-    background-image: url('../../../assets/home/background.png');
-    background-size: cover;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
 
-.recipesContainer {
+.recipes {
+  background-image: url('../../../assets/home/background.png');
+  background-size: cover;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  &__container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
-    @media (max-width:$small-tablet) {
-    grid-template-columns: 1fr 1fr;
-    }
-}
 
-.save {
+    @media (max-width: $small-tablet) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__save {
     margin-right: 35px;
     background-color: #020101;
     color: white;
@@ -23,13 +24,14 @@
     text-align: center;
     border: 1.5px solid red;
     border-radius: 5px;
-}
+  }
 
-.addFavourite {
+  &__addFavourite {
     width: 40px;
     height: 40px;
-}
+  }
 
-.disableClick {
+  &__disableClick {
     cursor: not-allowed;
+  }
 }

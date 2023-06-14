@@ -19,13 +19,16 @@ const Header = () => {
 
     return (
         <header className='header'>
-            <div className='headerBlock container'>
-                <div className='navigation'>
-                    <div className="logo">
+            <div className='header__block container'>
+                <div className='header__navigation'>
+                    <Link to={'/'}>
+                    <div className="header__logo">
                         <img src={Logo} alt="logo" />
                     </div>
-                    <nav className="">
-                        <ul className='navigationBlock'>
+                    </Link>
+
+                    <nav>
+                        <ul className='header__navigationBlock'>
                             <li>
                                 <Link to='/'>Home</Link>
                             </li>
@@ -35,12 +38,11 @@ const Header = () => {
                         </ul>
                     </nav>
                 </div>
-                <div className="registration">
-
+                <div className="header__registration">
                     {
                         loggedIn ?
-                            <button onClick={logOut} className='logButton'>LOG OUT</button> :
-                            <button onClick={logIn} className='logButton'>LOG IN</button>
+                            <button onClick={logOut} className='header__logButton'>LOG OUT</button> :
+                            <button onClick={logIn} className='header__logButton'>LOG IN</button>
                     }
 
                 </div>

@@ -1,35 +1,47 @@
 @import '../../../styles/variables.scss';
 
 .recipesSaved {
-    background-image: url('../../../assets/saved/background.png');
-    background-size: cover;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    height: 100%;
-    min-height: 100vh;
-}
+  background-image: url('../../../assets/saved/background.png');
+  background-size: cover;
+  padding-top: 65px;
+  padding-bottom: 50px;
+  height: 100%;
+  min-height: 100vh;
 
-.recipesSavedContainer {
+  &__container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
 
-    @media (max-width:$small-tablet) {
-        grid-template-columns: 1fr 1fr;
+    @media (max-width: $small-tablet) {
+      grid-template-columns: 1fr 1fr;
     }
-}
+  }
 
-.delete {
+  &__delete {
     background-color: #020101;
     color: white;
     padding: 8px 15px;
     text-align: center;
     border: 1.5px solid red;
     border-radius: 5px;
-}
+  }
 
-.likedCard {
+  &__likedCard {
     width: 40px;
     height: 40px;
     margin-left: 35px;
+  }
+
+  &__sortButton {
+    background-color: black;
+    border: 1px solid red;
+    color: red;
+    border-radius: 7px;
+    padding: 12px 12px;
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

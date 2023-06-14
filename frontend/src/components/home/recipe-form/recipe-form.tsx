@@ -1,28 +1,26 @@
 import { useState } from 'react';
-import './recipe-form.scss'
+import './recipe-form.scss';
 import { saveRecipe } from '../../../store/recipeSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 
 interface RecipeFormData {
-  name: string,
-  ingredients: Array<string>,
-  description: string,
-  image: string,
+  name: string;
+  ingredients: Array<string>;
+  description: string;
+  image: string;
   imageUrl: string;
 }
 
 const RecipeForm = () => {
-
   const dispatch = useDispatch();
-
 
   const [recipeData, setRecipeData] = useState<RecipeFormData>({
     name: '',
     ingredients: [''],
     description: '',
     image: '',
-    imageUrl: ''
+    imageUrl: '',
   });
 
   const handleChange = (event: React.ChangeEvent<any>) => {
@@ -62,21 +60,23 @@ const RecipeForm = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    dispatch(saveRecipe({ ...recipeData, liked: false, id: uuidv4() }))
+    dispatch(
+      saveRecipe({ ...recipeData, liked: false, id: uuidv4() })
+    );
     setRecipeData({
       name: '',
       ingredients: [''],
       description: '',
       image: '',
-      imageUrl: ''
-    })
+      imageUrl: '',
+    });
   };
 
   return (
-    <section>
-      <div className='container'>
-        <form className="recipe-form" onSubmit={handleSubmit}>
-          <div className="form-field">
+    <section className="recipe-form">
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <div className="recipe-form__field">
             <label htmlFor="name">Dish Name:</label>
             <input
               type="text"
@@ -86,7 +86,7 @@ const RecipeForm = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-field">
+          <div className="recipe-form__field">
             <label htmlFor="ingredients">Ingredients:</label>
             <textarea
               id="ingredients"
@@ -95,7 +95,7 @@ const RecipeForm = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-field">
+          <div className="recipe-form__field">
             <label htmlFor="description">About Dish:</label>
             <textarea
               id="description"
@@ -104,7 +104,7 @@ const RecipeForm = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-field">
+          <div className="recipe-form__field">
             <label htmlFor="imageFile">Choose Picture:</label>
             <input
               accept="image/jpeg, image/png"
@@ -114,7 +114,7 @@ const RecipeForm = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-button">
+          <div className="recipe-form__button">
             <button type="submit">Add</button>
           </div>
         </form>
