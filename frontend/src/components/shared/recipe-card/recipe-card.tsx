@@ -6,9 +6,10 @@ interface RecipeCardProps {
   index: number;
   item: RecipeDataProps;
   children: React.ReactNode;
+  loggedIn?:boolean
 }
 
-const RecipeCard: React.FC<RecipeCardProps> = ({ index, item, children }) => {
+const RecipeCard: React.FC<RecipeCardProps> = ({ index, item, children, loggedIn }) => {
   return (
     <div key={index} className='recipe-card'>
       <img className='recipe-card__image' src={item.image} alt="" />
@@ -23,6 +24,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ index, item, children }) => {
         <div className='recipe-card__button-block'>
           {children}
         </div>
+        {!loggedIn ? <div className="recipe-card_login-popup">Log In</div> : ""}
       </div>
     </div>
   );

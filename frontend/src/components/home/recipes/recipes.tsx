@@ -29,7 +29,7 @@ const Recipes = () => {
     <section className='recipes'>
       <div className='recipes__container container'>
         {recipesData.map((item: RecipeDataProps, index) => (
-          <RecipeCard index={index} item={item}>
+          <RecipeCard loggedIn={loggedIn} index={index} item={item}>
             <>
               <button
                 disabled={!loggedIn}

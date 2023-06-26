@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 interface RecipeFormData {
   name: string;
-  ingredients: Array<string>;
+  ingredients: string;
   description: string;
   image: string;
   imageUrl: string;
@@ -17,7 +17,7 @@ const RecipeForm = () => {
 
   const [recipeData, setRecipeData] = useState<RecipeFormData>({
     name: '',
-    ingredients: [''],
+    ingredients: '',
     description: '',
     image: '',
     imageUrl: '',
@@ -25,7 +25,7 @@ const RecipeForm = () => {
 
   const handleChange = (event: React.ChangeEvent<any>) => {
     const { name, value, files } = event.target;
-    if (name === 'imageFile') {
+    if (name === "imageFile") {
       if (files && files.length > 0) {
         const selectedImage = files[0];
         const imageUrl = URL.createObjectURL(selectedImage);
@@ -37,19 +37,10 @@ const RecipeForm = () => {
       } else {
         setRecipeData((prevState) => ({
           ...prevState,
-          image: '',
-          imageUrl: '',
+          image: "",
+          imageUrl: "",
         }));
       }
-    } else if (name === 'ingredients') {
-      const ingredientsArray = value
-        .split(/[^\wа-яА-ЯёЁ]+/)
-        .filter((ingredient: any) => ingredient.trim() !== '');
-
-      setRecipeData((prevState) => ({
-        ...prevState,
-        ingredients: ingredientsArray,
-      }));
     } else {
       setRecipeData((prevState) => ({
         ...prevState,
@@ -60,12 +51,21 @@ const RecipeForm = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    const ingredientsArray = recipeData.ingredients
+      .split(/,\s*/)
+      .flatMap((ingredient: string) => ingredient.trim().split(/\s+/))
+      .filter((ingredient: string) => ingredient !== "");
     dispatch(
-      saveRecipe({ ...recipeData, liked: false, id: uuidv4() })
+      saveRecipe({
+        ...recipeData,
+        ingredients: ingredientsArray,
+        liked: false,
+        id: uuidv4(),
+      })
     );
     setRecipeData({
       name: '',
-      ingredients: [''],
+      ingredients: '',
       description: '',
       image: '',
       imageUrl: '',
